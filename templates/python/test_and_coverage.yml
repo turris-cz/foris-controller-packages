@@ -1,0 +1,17 @@
+test::python:
+  stage: test
+  image: $IMAGE
+  parallel:
+    matrix:
+      - IMAGE: ['python:3.8-slim', 'python:3.9-slim', 'python:3.10-slim', 'python:3.11-slim']
+  script:
+    - pip install pytest pytest-cov
+    - pip install .
+    - pytest --junitxml=report.xml --cov --cov-report=term --cov-report=xml --cov-append
+  artifacts:
+    reports:
+      junit: report.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+  coverage: /^TOTAL.*\s+([^\s]+)%$/
