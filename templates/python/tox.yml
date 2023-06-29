@@ -1,0 +1,12 @@
+variables:
+  CI_TOX_ENVS: "-e py39 -e py310"
+  CI_TOX_EXTRA: ""
+  CI_TOX_IMAGE: registry.nic.cz/turris/foris-ci/python3
+
+test::python:
+  stage: test
+  image: ${CI_TOX_IMAGE}
+  script:
+    - pip install tox
+    - echo tox -q ${CI_TOX_ENVS} -- ${CI_TOX_EXTRA}
+    - tox -q ${CI_TOX_ENVS} -- ${CI_TOX_EXTRA}
