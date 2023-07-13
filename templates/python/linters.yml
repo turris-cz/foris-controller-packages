@@ -2,6 +2,6 @@ lint::python::tox:
   stage: lint
   image: python:3.9-slim
   before_script:
-    - pip install flake8 tox
+    - pip install flake8 tox wheel
   script:
     - tox -q -e lint
