@@ -5,8 +5,8 @@ test::python:
     matrix:
       - IMAGE: ['python:3.8-slim', 'python:3.9-slim', 'python:3.10-slim', 'python:3.11-slim']
   script:
-    - pip install pytest pytest-cov
-    - pip install .
+    - pip install  --break-system-package pytest pytest-cov
+    - pip install  --break-system-package .
     - pytest --junitxml=report.xml --cov --cov-report=term --cov-report=xml --cov-append
   artifacts:
     reports:
