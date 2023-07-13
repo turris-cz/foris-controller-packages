@@ -1,6 +1,9 @@
+variables:
+  IMAGE: python:3.9-slim
+
 lint::python::tox:
   stage: lint
-  image: python:3.9-slim
+  image: $IMAGE 
   script:
     - pip install flake8 tox wheel
     - tox -q -e lint
