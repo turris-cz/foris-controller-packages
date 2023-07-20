@@ -1,2 +1,3 @@
 variables:
   PIP_EXTRA_INDEX_URL: "https://gitlab.nic.cz/api/v4/projects/1066/packages/pypi/simple"
+  PIP_BREAK_SYSTEM_PACKAGES: 1

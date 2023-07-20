@@ -5,5 +5,5 @@ lint::python::tox:
   stage: lint
   image: $IMAGE 
   script:
-    - pip install --break-system-package flake8 tox wheel
+    - pip install flake8 tox wheel
     - tox -q -e lint

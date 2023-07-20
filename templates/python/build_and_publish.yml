@@ -17,7 +17,7 @@ build::python:
     - pip config set global.extra-index-url "https://gitlab.nic.cz/api/v4/projects/${PACKAGE_REGISTRY_PROJECT_ID}/packages/pypi/simple"
 
   script:
-    - pip install --break-system-package build
+    - pip install build
     - python3 -m build --sdist --wheel
   artifacts:
     paths:
@@ -29,6 +29,6 @@ publish::python::gitlab:
   image: python:3-slim
   needs: ["build::python"]
   script:
-    - pip install --break-system-package twine
+    - pip install twine
     - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python3 -m twine upload --repository-url https://gitlab.nic.cz/api/v4/projects/${PACKAGE_REGISTRY_PROJECT_ID}/packages/pypi dist/*
   <<: *version_tags_only
