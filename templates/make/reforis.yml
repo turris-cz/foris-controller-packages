@@ -1,0 +1,28 @@
+# Tests of reforis and its plugins
+variables:
+  IMAGE: registry.nic.cz/turris/foris-ci/reforis-ci
+
+lint::make:
+  stage: lint
+  image: $IMAGE 
+  before_script:
+    - make prepare-dev
+  script:
+    - make lint
+
+test::make:
+  stage: test
+  image: $IMAGE 
+  before_script:
+    - make prepare-dev
+  script:
+    - make compile-messages
+    - make test
+
+test::js-build:
+  stage: test
+  image: $IMAGE 
+  script:
+    - cd js
+    - npm install
+    - npm run-script build -- -o /tmp/app.min.js
