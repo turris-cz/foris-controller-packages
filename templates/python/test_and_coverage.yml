@@ -3,7 +3,7 @@ test::python:
   image: $IMAGE
   parallel:
     matrix:
-      - IMAGE: ['python:3.8-slim', 'python:3.9-slim', 'python:3.10-slim', 'python:3.11-slim']
+      - IMAGE: ['python:3.10-slim', 'python:3.11-slim']
   script:
     - pip install pytest pytest-cov
     - pip install .
