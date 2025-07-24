@@ -1,5 +1,5 @@
 variables:
-  IMAGE: python:3.9
+  IMAGE: python:3.11
   EXTRAS: tests
 
 lint::python::pre-commit:
