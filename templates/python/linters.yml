@@ -1,5 +1,5 @@
 variables:
-  IMAGE: python:3.9-slim
+  IMAGE: python:3.11-slim
 
 lint::python::tox:
   stage: lint
