@@ -1,0 +1,13 @@
+variables:
+  IMAGE: python:3.11
+
+lint::python::ruff:
+  stage: lint
+  image: $IMAGE
+  script:
+    - apt-get update
+    - apt-get install -y --no-install-recommends libcap-dev 
+    - pip install --upgrade pip
+    - pip install .[dev]
+    - ruff format
+    - ruff check --fix
